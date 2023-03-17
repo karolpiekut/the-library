@@ -9,6 +9,26 @@
 </head>
 <body>
 <h1>The Library</h1>
-
+<div id="data-entry">
+    <form action="" method="post" id="library-input">
+        <label for='title'>Title</label>
+        <input tabindex="1" id='title' name='title' type='text'/>
+        <label for='author'>Author</label>
+        <input tabindex="2" id='author' name='author' type='text'/>
+        <label for="pages">Pages</label>
+        <input tabindex="3" id="pages" name="pages" type="number"/>
+        <button id="add-new-book" type="submit" onclick="addNewBook()">add new book</button>
+    </form>
+    <table id="library-items">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Read?</th>
+        </tr>
+    </table>
+</div>
 </body>
 </html>
+
