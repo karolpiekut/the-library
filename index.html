@@ -5,29 +5,60 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="styles.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <title>Library</title>
 </head>
 <body>
-<h1>The Library</h1>
-<div id="data-entry">
-    <form action="" method="post" id="library-input">
-        <label for='title'>Title</label>
-        <input tabindex="1" id='title' name='title' type='text'/>
-        <label for='author'>Author</label>
-        <input tabindex="2" id='author' name='author' type='text'/>
-        <label for="pages">Pages</label>
-        <input tabindex="3" id="pages" name="pages" type="number"/>
-        <button id="add-new-book" type="submit" onclick="addNewBook()">add new book</button>
-    </form>
+<div id="the-library">
+    <div id="logo">
+        <img id="logo-image" src="./bookshelf.svg" alt="bookshelf-image">
+        <h1>The Library</h1>
+    </div>
+    <div id="data-entry">
+        <form action="" method="post" id="library-input">
+            <label for='title'>Title</label>
+            <input tabindex="1" id='title' name='title' type='text'/>
+            <label for='author'>Author</label>
+            <input tabindex="2" id='author' name='author' type='text'/>
+            <label for="pages">Pages</label>
+            <input tabindex="3" id="pages" name="pages" type="number"/>
+            <label for="read-status">Status</label>
+            <select tabindex="4" id="read-status" name="read-status">
+                <option value="not-read" selected>Not read</option>
+                <option value="in-progress">In progress</option>
+                <option value="read">Read</option>
+            </select>
+            <button id="add-new-book" type="submit" onclick="addNewBook()">add new book</button>
+        </form>
+    </div>
     <table id="library-items">
+        <tr id="header">
+            <th class="header-item" id="id-header">ID</th>
+            <th class="header-item" id="title-header">Title</th>
+            <th class="header-item" id="author-header">Author</th>
+            <th class="header-item" id="pages-header">Pages</th>
+            <th class="header-item" id="read-status-header">Status</th>
+            <th class="header-item" id="remove-header">Remove</th>
+        </tr>
         <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Read?</th>
+            <td class="table-item">1</td>
+            <td class="table-item">The Lord Of The Rings</td>
+            <td class="table-item">JRR Tolkien</td>
+            <td class="table-item">600</td>
+            <td class="table-item">Read</td>
+            <td class="table-item"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></td>
+        </tr>
+        <tr>
+            <td class="table-item">2</td>
+            <td class="table-item">Dune</td>
+            <td class="table-item">Frank Herbert</td>
+            <td class="table-item">600</td>
+            <td class="table-item">Read</td>
+            <td class="table-item"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></td>
         </tr>
     </table>
+
 </div>
 </body>
 </html>
