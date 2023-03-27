@@ -17,19 +17,13 @@
         <h1>The Library</h1>
     </div>
     <div id="data-entry">
-        <form action="" method="post" id="library-input">
+        <form id="library-input">
             <label for='title'>Title</label>
             <input tabindex="1" id='title' name='title' type='text'/>
             <label for='author'>Author</label>
             <input tabindex="2" id='author' name='author' type='text'/>
             <label for="pages">Pages</label>
-            <input tabindex="3" id="pages" name="pages" type="number"/>
-            <label for="read-status">Status</label>
-            <select tabindex="4" id="read-status" name="read-status">
-                <option value="not-read" selected>Not read</option>
-                <option value="in-progress">In progress</option>
-                <option value="read">Read</option>
-            </select>
+            <input tabindex="3" id="pages" name="pages" min="1" type="number"/>
             <button id="add-new-book" type="submit">add new book</button>
         </form>
     </div>
@@ -47,14 +41,6 @@
             <td class="table-item left">The Lord Of The Rings</td>
             <td class="table-item left">JRR Tolkien</td>
             <td class="table-item">600</td>
-            <td class="table-item">Read</td>
-            <td class="table-item"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></td>
-        </tr>
-        <tr>
-            <td class="table-item">2</td>
-            <td class="table-item left">Dune</td>
-            <td class="table-item left">Frank Herbert</td>
-            <td class="table-item">650</td>
             <td class="table-item">Read</td>
             <td class="table-item"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></td>
         </tr>
