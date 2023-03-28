@@ -14,9 +14,12 @@ function addNewBook(event) {
     const bookTitle = (this.querySelector('[name=title]')).value;
     const bookAuthor =  (this.querySelector('[name=author]')).value;
     const bookPages = (this.querySelector('[name=pages]')).value;
-
+    const letters = /^[A-Za-z0-9]+$/;
     if (bookTitle === '' || bookAuthor === '' || bookPages === '') {
-        alert("Please populate all input fields.")
+        alert("Please populate all input fields.");
+    } else if (!bookTitle.match(letters) || !bookAuthor.match(letters) || !bookPages.match(letters)) {
+        alert("Letters and numbers only please.");
+        this.reset();
     } else {
         const newBook = new Book(bookTitle, bookAuthor, bookPages);
         library.push(newBook);
