@@ -8,17 +8,22 @@ function Book(title, author, pages) {
     this.author = author;
     this.pages = pages;
 }
-
 function addNewBook(event) {
     event.preventDefault();
     const bookTitle = (this.querySelector('[name=title]')).value;
     const bookAuthor =  (this.querySelector('[name=author]')).value;
     const bookPages = (this.querySelector('[name=pages]')).value;
-    const letters = /^[A-Za-z0-9]+$/;
+    const htmlRegex = /(<([^>]+)>)/ig;
+    const linkRegex = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)/g
     if (bookTitle === '' || bookAuthor === '' || bookPages === '') {
         alert("Please populate all input fields.");
-    } else if (!bookTitle.match(letters) || !bookAuthor.match(letters) || !bookPages.match(letters)) {
-        alert("Letters and numbers only please.");
+    } else if (bookTitle.match(htmlRegex) ||
+        bookAuthor.match(htmlRegex) ||
+        bookPages.match(htmlRegex) ||
+        bookTitle.match(linkRegex) ||
+        bookAuthor.match(linkRegex) ||
+        bookPages.match(linkRegex)) {
+        alert("Having fun?");
         this.reset();
     } else {
         const newBook = new Book(bookTitle, bookAuthor, bookPages);
