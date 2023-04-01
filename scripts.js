@@ -1,8 +1,15 @@
 const theLibraryTable = document.querySelector("#library-items");
 const dataEntry = document.querySelector('#library-input');
+const deleteButton = document.querySelector('.delete-button');
+
 
 let library = [
 ];
+
+
+function deleteItem() {
+    console.log("delete");
+}
 function Book(title, author, pages) {
     this.title = title;
     this.author = author;
@@ -23,7 +30,7 @@ function addNewBook(event) {
         bookTitle.match(linkRegex) ||
         bookAuthor.match(linkRegex) ||
         bookPages.match(linkRegex)) {
-        alert("Having fun?");
+        alert("Please review your input.");
         this.reset();
     } else {
         const newBook = new Book(bookTitle, bookAuthor, bookPages);
@@ -51,7 +58,7 @@ function populateTable(library = [], theLibraryTable) {
             <td class="table-item left">${library[i].author}</td>
             <td class="table-item">${library[i].pages}</td>
             <td class="table-item">Read</td>
-            <td class="table-item"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></td>
+            <td class="table-item"><button onclick="deleteItem()"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></button></td>
             </tr>
         `;
     }
@@ -59,5 +66,10 @@ function populateTable(library = [], theLibraryTable) {
 }
 
 
+
 dataEntry.addEventListener('submit', addNewBook);
+
+//turn read status into a button that will change the color of the td cell depending on whether it has been read or not
+//figure out delete function how to get IDs correctly populated
+//figure our how to get th ID with increments
 

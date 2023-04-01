@@ -108,6 +108,16 @@ td {
     text-align: center;
 }
 
+.table-item > button {
+    border:none;
+     background: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .left {
     text-align: left;
 }
