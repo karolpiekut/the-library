@@ -1,24 +1,31 @@
 const theLibraryTable = document.querySelector("#library-items");
 const dataEntry = document.querySelector('#library-input');
-const deleteButton = document.querySelector('.delete-button');
+const readStatusButton = document.getElementById('readStatusButton');
 
-
-let library = [
-];
-
+let library = [];
 
 function deleteItem() {
-    console.log("delete");
+    alert("delete");
 }
+
+function changeStatus() {
+    if (readStatusButton.value === "Read") {
+        readStatusButton.innerText.value = "Not read";
+    } else if (readStatusButton.value === "Not read") {
+        readStatusButton.innerText = "Read";
+    }
+}
+
 function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
 }
+
 function addNewBook(event) {
     event.preventDefault();
     const bookTitle = (this.querySelector('[name=title]')).value;
-    const bookAuthor =  (this.querySelector('[name=author]')).value;
+    const bookAuthor = (this.querySelector('[name=author]')).value;
     const bookPages = (this.querySelector('[name=pages]')).value;
     const htmlRegex = /(<([^>]+)>)/ig;
     const linkRegex = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)/g
@@ -51,13 +58,13 @@ function populateTable(library = [], theLibraryTable) {
             <th class="header-item" id="remove-header">Remove</th>
         </tr>`
     for (let i = 0; i < library.length; i++) {
-        str +=`
+        str += `
             <tr>
-            <td class="table-item">1</td>
+            <td class="table-item">${i + 1}</td>
             <td class="table-item left">${library[i].title}</td>
             <td class="table-item left">${library[i].author}</td>
             <td class="table-item">${library[i].pages}</td>
-            <td class="table-item">Read</td>
+            <td class="table-item"><button id="readStatusButton" onclick="changeStatus()">Read</button></td>
             <td class="table-item"><button onclick="deleteItem()"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></button></td>
             </tr>
         `;
@@ -66,10 +73,9 @@ function populateTable(library = [], theLibraryTable) {
 }
 
 
-
 dataEntry.addEventListener('submit', addNewBook);
 
+
 //turn read status into a button that will change the color of the td cell depending on whether it has been read or not
-//figure out delete function how to get IDs correctly populated
 //figure our how to get th ID with increments
 
