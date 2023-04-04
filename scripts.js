@@ -1,25 +1,23 @@
 const theLibraryTable = document.querySelector("#library-items");
 const dataEntry = document.querySelector('#library-input');
-const readStatusButton = document.getElementById('readStatusButton');
 
 let library = [];
 
-function deleteItem() {
-    alert("delete");
+function deleteItem(i) {
+    let element = document.getElementById(`${i}`);
+    element.remove();
+    library.splice(i, 1);
 }
 
-function changeStatus() {
-    if (readStatusButton.value === "Read") {
-        readStatusButton.innerText.value = "Not read";
-    } else if (readStatusButton.value === "Not read") {
-        readStatusButton.innerText = "Read";
-    }
+function changeTick(i) {
+    library[i].read = library[i].read !== true;
 }
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
 }
 
 function addNewBook(event) {
@@ -27,6 +25,7 @@ function addNewBook(event) {
     const bookTitle = (this.querySelector('[name=title]')).value;
     const bookAuthor = (this.querySelector('[name=author]')).value;
     const bookPages = (this.querySelector('[name=pages]')).value;
+    const bookRead = (this.querySelector('[name=read]')).checked;
     const htmlRegex = /(<([^>]+)>)/ig;
     const linkRegex = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)/g
     if (bookTitle === '' || bookAuthor === '' || bookPages === '') {
@@ -40,34 +39,46 @@ function addNewBook(event) {
         alert("Please review your input.");
         this.reset();
     } else {
-        const newBook = new Book(bookTitle, bookAuthor, bookPages);
+        const newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
         library.push(newBook);
         populateTable(library, theLibraryTable);
         this.reset();
     }
-    console.table(library);
 }
 
 function populateTable(library = [], theLibraryTable) {
     let str = `<tr id="header">
-            <th class="header-item" id="id-header">ID</th>
+            <th class="header-item" id="id-header">#</th>
             <th class="header-item left" id="title-header">Title</th>
             <th class="header-item left" id="author-header">Author</th>
             <th class="header-item" id="pages-header">Pages</th>
-            <th class="header-item" id="read-status-header">Status</th>
+            <th class="header-item" id="read-status-header">Read?</th>
             <th class="header-item" id="remove-header">Remove</th>
         </tr>`
     for (let i = 0; i < library.length; i++) {
-        str += `
-            <tr>
+        if (library[i].read === true) {
+            str += `
+            <tr id=${i}>
             <td class="table-item">${i + 1}</td>
             <td class="table-item left">${library[i].title}</td>
             <td class="table-item left">${library[i].author}</td>
-            <td class="table-item">${library[i].pages}</td>
-            <td class="table-item"><button id="readStatusButton" onclick="changeStatus()">Read</button></td>
-            <td class="table-item"><button onclick="deleteItem()"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></button></td>
+            <td class="table-item">${library[i].pages}</td>     
+            <td class="table-item"><input onclick="changeTick(${i})" type="checkbox" checked></td>
+            <td class="table-item"><button onclick="deleteItem(${i})"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></button></td>
             </tr>
         `;
+        } else {
+            str += `
+            <tr id=${i}>
+            <td class="table-item">${i + 1}</td>
+            <td class="table-item left">${library[i].title}</td>
+            <td class="table-item left">${library[i].author}</td>
+            <td class="table-item">${library[i].pages}</td>     
+            <td class="table-item"><input onclick="changeTick(${i})" type="checkbox"></td>
+            <td class="table-item"><button onclick="deleteItem(${i})"><img class="delete" src="./trash-can-outline.svg" alt="delete-icon"></button></td>
+            </tr>
+        `;
+        }
     }
     theLibraryTable.innerHTML = str;
 }
@@ -75,7 +86,4 @@ function populateTable(library = [], theLibraryTable) {
 
 dataEntry.addEventListener('submit', addNewBook);
 
-
-//turn read status into a button that will change the color of the td cell depending on whether it has been read or not
-//figure our how to get th ID with increments
 

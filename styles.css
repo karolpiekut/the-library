@@ -64,10 +64,6 @@ h1 {
 
 
 
-button:hover {
-    background: darkorange;
-}
-
 
 #library-items {
     border-collapse: collapse;
@@ -115,6 +111,9 @@ td {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.table-item input {
 
 }
 
@@ -128,7 +127,7 @@ td {
     background: orange;
     color: black;
     height: 25px;
-    min-width: 115px;
+    min-width: 120px;
     display: inline-block;
 }
 
@@ -150,4 +149,8 @@ td {
 }
 #remove-header {
     width: 8%;
+}
+
+#add-new-book:hover {
+    background: orange;
 }

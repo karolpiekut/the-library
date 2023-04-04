@@ -24,16 +24,18 @@
             <input tabindex="2" id='author' name='author' type='text'/>
             <label for="pages">Pages</label>
             <input tabindex="3" id="pages" name="pages" min="1" type="number"/>
-            <button id="add-new-book" type="submit">add new book</button>
+            <label for="read">Read?</label>
+            <input tabindex="4" id="read" name="read" type="checkbox"/>
+            <button tabindex="5" id="add-new-book" type="submit">add new book</button>
         </form>
     </div>
     <table id="library-items">
         <tr id="header">
-            <th class="header-item" id="id-header">ID</th>
+            <th class="header-item" id="id-header">#</th>
             <th class="header-item left" id="title-header">Title</th>
             <th class="header-item left" id="author-header">Author</th>
             <th class="header-item" id="pages-header">Pages</th>
-            <th class="header-item" id="read-status-header">Status</th>
+            <th class="header-item" id="read-status-header">Read?</th>
             <th class="header-item" id="remove-header">Remove</th>
         </tr>
     </table>
