@@ -43,23 +43,25 @@ h1 {
     gap: 15px;
 }
 
+
+
 #data-entry {
     font-size: 1em;
 }
 
 #title, #author {
     height: 1em;
-    width: 20em;
+    min-width: 20em;
 }
 
 #pages {
     height: 1em;
-    width: 5em;
+    min-width: 5em;
 }
 
 #read-status {
     height: 1.5em;
-    width: 10em;
+    min-width: 10em;
 }
 
 
@@ -67,7 +69,7 @@ h1 {
 
 #library-items {
     border-collapse: collapse;
-    width: 75%;
+    width: 90%;
 }
 
 td, th {
@@ -153,4 +155,15 @@ td {
 
 #add-new-book:hover {
     background: orange;
+}
+
+@media (max-width: 1100px) {
+    #library-input {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 5px;
+    }
+
 }

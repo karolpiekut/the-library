@@ -3,21 +3,15 @@ const dataEntry = document.querySelector('#library-input');
 
 let library = [];
 
-function deleteItem(i) {
-    let element = document.getElementById(`${i}`);
-    element.remove();
-    library.splice(i, 1);
-}
-
-function changeTick(i) {
-    library[i].read = library[i].read !== true;
-}
-
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+Book.prototype.changeReadStatus = function() {
+    this.read = this.read !== true;
 }
 
 function addNewBook(event) {
@@ -83,7 +77,19 @@ function populateTable(library = [], theLibraryTable) {
     theLibraryTable.innerHTML = str;
 }
 
+function deleteItem(i) {
+    let elementDelete = document.getElementById(`${i}`);
+    elementDelete.remove();
+    library.splice(i, 1);
+    populateTable(library, theLibraryTable);
+}
+
+function changeTick(i) {
+    library[i].changeReadStatus();
+    populateTable(library, theLibraryTable);
+}
 
 dataEntry.addEventListener('submit', addNewBook);
 
-
+//bug delete items
+//bug tick box after delete items
