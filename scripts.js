@@ -90,6 +90,3 @@ function changeTick(i) {
 }
 
 dataEntry.addEventListener('submit', addNewBook);
-
-//bug delete items
-//bug tick box after delete items
