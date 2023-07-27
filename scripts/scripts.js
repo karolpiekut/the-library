@@ -71,7 +71,7 @@
             <td class="table-item left">${library[i].author}</td>
             <td class="table-item">${library[i].pages}</td>     
             <td class="table-item"><input onclick="changeTick(${i})" type="checkbox" checked></td>
-            <td class="table-item"><button onclick="deleteItem(${i})"><img class="delete" src="../resources/trash-can-outline.svg" alt="delete-icon"></button></td>
+            <td class="table-item"><button onclick="deleteItem(${i})"><img class="delete" src="/resources/trash-can-outline.svg" alt="delete-icon"></button></td>
             </tr>
         `;
             } else {
@@ -82,7 +82,7 @@
             <td class="table-item left">${library[i].author}</td>
             <td class="table-item">${library[i].pages}</td>     
             <td class="table-item"><input onclick="changeTick(${i})" type="checkbox"></td>
-            <td class="table-item"><button onclick="deleteItem(${i})"><img class="delete" src="../resources/trash-can-outline.svg" alt="delete-icon"></button></td>
+            <td class="table-item"><button onclick="deleteItem(${i})"><img class="delete" src="/resources/trash-can-outline.svg" alt="delete-icon"></button></td>
             </tr>
         `;
             }
