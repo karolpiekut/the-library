@@ -17,15 +17,26 @@
         <h1>The Library</h1>
     </div>
     <div id="data-entry">
-        <form id="library-input">
-            <label for='title'>Title</label>
-            <input tabindex="1" id='title' name='title' type='text'/>
-            <label for='author'>Author</label>
-            <input tabindex="2" id='author' name='author' type='text'/>
-            <label for="pages">Pages</label>
-            <input tabindex="3" id="pages" name="pages" min="1" type="number"/>
-            <label for="read">Read?</label>
-            <input tabindex="4" id="read" name="read" type="checkbox"/>
+        <form id="library-input" novalidate>
+            <label for='title' class="input-field-class">
+                <span class="spanText">Title</span>
+                <input tabindex="1" id='title' name='title' type='text' required>
+                <span class="error" aria-live="polite"></span>
+            </label>
+            <label for='author' class="input-field-class">
+                <span class="spanText">Author</span>
+                <input tabindex="2" id='author' name='author' type='text' required/>
+                <span class="error" aria-live="polite"></span>
+            </label>
+            <label for="pages" class="input-field-class">
+                <span class="spanText">Pages</span>
+                <input tabindex="3" id="pages" name="pages" min="1" type="number" required/>
+                <span class="error" aria-live="polite"></span>
+            </label>
+            <label for="read" class="input-field-class">
+                <span class="spanText">Read?</span>
+                <input tabindex="4" id="read" name="read" type="checkbox"/>
+            </label>
             <button tabindex="5" id="add-new-book" type="submit">add new book</button>
         </form>
     </div>
